@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="button1" type="id"/>
+    <item name="autoCompleteTextView1" type="id" />
+    <item name="editText1" type="id" />
+    <item name="relativeView1" type="id" />
+    <item name="spinner1" type="id" />
+    <item name="spinner2" type="id" />
+    <item name="textView1" type="id" />
+    <item name="textVieweq" type="id" />
+    <item name="textViewmulty" type="id" />
+    <item name="textViewtochki" type="id" />
+    <item name="addeditText1" type="id" />
+    <item name="addeditText2" type="id" />
+    <item name="addspinner1" type="id" />
+    <item name="settings_text1" type="id" />
+    <item name="settings_text2" type="id" />
+    <item name="relativeViewStat" type="id" />
+    <item name="button2" type="id">button2</item>
+    <item name="LinLayouttx" type="id" />
+
+</resources>

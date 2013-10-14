@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="main" >
+        <source path="P:\dropbox\Android_Projects\Diet_Diary\res" >
+            <file
+                name="color1"
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\color\color1.xml"
+                qualifiers=""
+                type="color" />
+            <file
+                name="colors"
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\color\colors.xml"
+                qualifiers=""
+                type="color" />
+            <file
+                name="button_cancel"
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\drawable\button_cancel.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="button_list"
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\drawable\button_list.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="button_save"
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\drawable\button_save.xml"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="cancel"
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\drawable\cancel.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="cancel_c"
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\drawable\cancel_c.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="cancel_f"
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\drawable\cancel_f.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="q"
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\drawable\q.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="q_c"
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\drawable\q_c.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="q_f"
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\drawable\q_f.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="save"
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\drawable\save.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="save_c"
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\drawable\save_c.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="save_f"
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\drawable\save_f.png"
+                qualifiers=""
+                type="drawable" />
+            <file
+                name="back"
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\drawable-hdpi\back.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\drawable-hdpi\ic_launcher.png"
+                qualifiers="hdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\drawable-ldpi\ic_launcher.png"
+                qualifiers="ldpi"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\drawable-mdpi\ic_launcher.png"
+                qualifiers="mdpi"
+                type="drawable" />
+            <file
+                name="ic_launcher"
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\drawable-xhdpi\ic_launcher.png"
+                qualifiers="xhdpi"
+                type="drawable" />
+            <file
+                name="activity_main"
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\layout\activity_main.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_stats"
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\layout\activity_stats.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="add_food"
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\layout\add_food.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="my_custom_dropdown"
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\layout\my_custom_dropdown.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="select_date"
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\layout\select_date.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="settings_menu"
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\layout\settings_menu.xml"
+                qualifiers=""
+                type="layout" />
+            <file
+                name="activity_main"
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\layout-xlarge\activity_main.xml"
+                qualifiers="xlarge"
+                type="layout" />
+            <file
+                name="activity_main"
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\menu\activity_main.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="activity_stats"
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\menu\activity_stats.xml"
+                qualifiers=""
+                type="menu" />
+            <file
+                name="eating"
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\raw\eating"
+                qualifiers=""
+                type="raw" />
+            <file
+                name="food"
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\raw\food"
+                qualifiers=""
+                type="raw" />
+            <file
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\values\bools.xml"
+                qualifiers="" >
+                <bool name="center_true" >
+true
+                </bool>
+            </file>
+            <file
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\values\dimens.xml"
+                qualifiers="" >
+                <dimen name="tdp16" >16dp
+                </dimen>
+                <dimen name="date_text_size_12" >22dp
+                </dimen>
+                <dimen name="tdp18" >18dp
+                </dimen>
+            </file>
+            <file
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\values\ids.xml"
+                qualifiers="" >
+                <item
+                    name="textViewmulty"
+                    type="id"/>
+                <item
+                    name="addeditText1"
+                    type="id"/>
+                <item
+                    name="addeditText2"
+                    type="id"/>
+                <item
+                    name="settings_text2"
+                    type="id"/>
+                <item
+                    name="textViewtochki"
+                    type="id"/>
+                <item
+                    name="settings_text1"
+                    type="id"/>
+                <item
+                    name="editText1"
+                    type="id"/>
+                <item
+                    name="relativeViewStat"
+                    type="id"/>
+                <item
+                    name="textView1"
+                    type="id"/>
+                <item
+                    name="LinLayouttx"
+                    type="id"/>
+                <item
+                    name="relativeView1"
+                    type="id"/>
+                <item
+                    name="textVieweq"
+                    type="id"/>
+                <item
+                    name="button2"
+                    type="id">
+button2
+                </item>
+                <item
+                    name="addspinner1"
+                    type="id"/>
+                <item
+                    name="spinner2"
+                    type="id"/>
+                <item
+                    name="button1"
+                    type="id"/>
+                <item
+                    name="spinner1"
+                    type="id"/>
+                <item
+                    name="autoCompleteTextView1"
+                    type="id"/>
+            </file>
+            <file
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\values\strings.xml"
+                qualifiers="" >
+                <string name="obqd" >Обяд
+                </string>
+                <string name="title_activity_main" >Точкова Диета
+                </string>
+                <string name="eq" >=
+                </string>
+                <string name="hrana" >Храна
+                </string>
+                <string name="Stats" >Статистика
+                </string>
+                <string name="gr" >гр.
+                </string>
+                <string name="zakuska" >Закуска
+                </string>
+                <string name="stat_button" >Покажи
+                </string>
+                <string name="title_activity_stats" >Статистика
+                </string>
+                <string name="add" >Добави храна
+                </string>
+                <string name="app_name" >Точкова диета
+                </string>
+                <string name="internet" >internet
+                </string>
+                <string name="vecherq" >Вечеря
+                </string>
+                <string name="pohapvane" >Похапване
+                </string>
+                <string name="Tochki" >Точки
+                </string>
+                <string name="tochki" >точки
+                </string>
+                <string name="vg_100" >Въглехидрати за 100 гр.
+                </string>
+                <string name="hello_world" >Hello world!
+                </string>
+                <string name="weight_now" >Тегло в момента
+                </string>
+                <string name="multiply" >*
+                </string>
+                <string name="weight_wish" >Желани килограми
+                </string>
+                <string name="hrana_name" >Име на храната
+                </string>
+                <string name="menu_settings" >Настройки
+                </string>
+            </file>
+            <file
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\values\styles.xml"
+                qualifiers="" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Light" >
+
+                    <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+                    -->
+                </style>
+
+                <style
+                    name="AppTheme"
+                    parent="AppBaseTheme" >
+
+                    <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+                </style>
+            </file>
+            <file
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\values-v11\styles.xml"
+                qualifiers="v11" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Holo.Light" >
+
+                    <!-- API 11 theme customizations can go here. -->
+
+                </style>
+            </file>
+            <file
+                path="P:\dropbox\Android_Projects\Diet_Diary\res\values-v14\styles.xml"
+                qualifiers="v14" >
+
+                <style
+                    name="AppBaseTheme"
+                    parent="android:Theme.Holo.Light.DarkActionBar" >
+
+                    <!-- API 14 theme customizations can go here. -->
+
+                </style>
+            </file>
+        </source>
+        <source path="P:\dropbox\Android_Projects\Diet_Diary\build\res\rs\debug" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="P:\dropbox\Android_Projects\Diet_Diary\build-types\debug\res" />
+    </dataSet>
+
+</merger>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:background="#99CCFF"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:id="@id/relativeView1"
+        android:layout_width="wrap_content"
+        android:layout_height="380.0dip">
+
+        <TextView
+            android:id="@id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:textAppearance="?android:textAppearanceLarge" />
+
+        <Spinner
+            android:id="@id/spinner2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/textView1"
+            android:layout_marginTop="15.0dip" />
+
+        <Spinner
+            android:id="@id/spinner1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/spinner2"
+            android:layout_marginTop="15.0dip" />
+
+        <AutoCompleteTextView
+            android:id="@id/autoCompleteTextView1"
+            android:layout_width="220.0dip"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/spinner1"
+            android:layout_marginTop="14.0dip"
+            android:completionThreshold="1"
+            android:ems="10"
+            android:hint="Храна"
+            android:imeOptions="actionNext"
+            android:lines="2" >
+
+            <requestFocus />
+        </AutoCompleteTextView>
+
+        <EditText
+            android:id="@id/editText1"
+            android:layout_width="80.0dip"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/autoCompleteTextView1"
+            android:layout_toRightOf="@id/textViewmulty"
+            android:layout_marginLeft="15.0dip"
+            android:ems="10"
+            android:hint="гр."
+            android:imeOptions="actionDone"
+            android:inputType="numberDecimal" />
+
+        <TextView
+            android:id="@id/textViewmulty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignTop="@id/editText1"
+            android:layout_marginLeft="15.0dip"
+            android:text="@string/multiply"
+            android:textAppearance="?android:textAppearanceSmall" />
+
+        <TextView
+            android:id="@id/textVieweq"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/textViewtochki"
+            android:layout_marginLeft="40.0dip"
+            android:layout_toRightOf="@id/editText1"
+            android:text="@string/eq"
+            android:textAppearance="?android:textAppearanceMedium" />
+
+        <Button
+            android:id="@id/button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/textViewtochki"
+            android:layout_below="@id/editText1"
+            android:layout_marginTop="40.0dip"
+            android:background="@drawable/button_save"
+            />
+        <Button
+            android:id="@id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@id/button1"
+            android:layout_below="@id/editText1"
+            android:layout_marginTop="40.0dip"
+            android:layout_marginRight="200.0dip"
+            android:background="@drawable/button_cancel"
+            />
+
+        <TextView
+            android:id="@id/textViewtochki"
+            android:layout_width="120.0dip"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/editText1"
+            android:layout_marginLeft="40.0dip"
+            android:layout_toRightOf="@id/textVieweq"
+            android:text="точки"
+            android:textAppearance="?android:textAppearanceLarge" />
+
+    </RelativeLayout>
+
+</ScrollView><!-- From: file:/P:/dropbox/Android_Projects/Diet_Diary/res/layout-xlarge/activity_main.xml -->

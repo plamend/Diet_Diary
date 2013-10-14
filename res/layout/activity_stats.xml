@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#99CCFF" >
+
+
+
+    <Spinner
+    android:id="@+id/spinnerdate1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignBottom="@+id/statbutton1"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentTop="true"
+    android:layout_toLeftOf="@+id/statbutton1"
+     />
+
+<Button
+    android:id="@+id/statbutton1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentRight="true"
+    android:layout_alignParentTop="true"
+    android:background="@drawable/button_list"/>
+
+<ScrollView
+    android:id="@+id/scrollView1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentRight="true"
+    android:layout_below="@+id/spinnerdate1"
+    android:layout_marginTop="30dp"
+    android:visibility="gone" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:orientation="vertical" >
+
+<TextView
+    android:id="@+id/TRdate"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:textSize="@dimen/date_text_size_12" />
+
+<TextView
+    android:id="@+id/all_points"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal" />
+
+        <TableLayout
+            android:id="@+id/stat_table0"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+             >
+            <TableRow
+                android:id="@+id/table0_row1">
+
+       <TextView
+           android:text="@string/zakuska"
+           android:textSize="@dimen/tdp18"
+           android:minWidth="150dp"/>
+
+        <TextView
+            android:id="@+id/eat0_t"
+            android:textSize="@dimen/tdp18" />
+			
+		</TableRow>
+			<TableRow
+			    android:id="@+id/table0_row2">
+
+			<TextView
+			    android:minWidth="150dp"
+			    android:text="@string/hrana"
+			    android:textSize="@dimen/tdp16" />
+
+			<TextView
+			    android:minWidth="50dp"
+			    android:text="@string/Tochki"
+			    android:textSize="@dimen/tdp16" />
+			
+		</TableRow>
+
+			
+            
+        </TableLayout>
+        <TableLayout
+            android:id="@+id/stat_table1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+           <TableRow
+               android:id="@+id/table1_row1">
+
+       <TextView
+           android:text="@string/obqd"
+           android:textSize="@dimen/tdp18"
+           android:minWidth="150dp"/>
+
+        <TextView
+            android:id="@+id/eat1_t"
+            android:textSize="@dimen/tdp18" />
+			
+		</TableRow>
+			<TableRow
+			    android:id="@+id/table1_row2">
+
+			<TextView
+			    android:minWidth="150dp"
+			    android:text="@string/hrana"
+			    android:textSize="@dimen/tdp16" />
+
+			<TextView
+			    android:minWidth="50dp"
+			    android:text="@string/Tochki"
+			    android:textSize="@dimen/tdp16" />
+			
+		</TableRow>
+            
+        </TableLayout>
+        
+         <TableLayout
+            android:id="@+id/stat_table2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+           <TableRow
+               android:id="@+id/table2_row1">
+
+       <TextView
+           android:text="@string/pohapvane"
+           android:textSize="@dimen/tdp18"
+           android:minWidth="150dp"/>
+
+        <TextView
+            android:id="@+id/eat2_t"
+            android:textSize="@dimen/tdp18" />
+			
+		</TableRow>
+			<TableRow
+			    android:id="@+id/table2_row2">
+
+			<TextView
+			    android:minWidth="150dp"
+			    android:text="@string/hrana"
+			    android:textSize="@dimen/tdp16" />
+
+			<TextView
+			    android:minWidth="50dp"
+			    android:text="@string/Tochki"
+			    android:textSize="@dimen/tdp16" />
+			
+		</TableRow>
+            
+        </TableLayout>
+        
+          <TableLayout
+            android:id="@+id/stat_table3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+           <TableRow
+               android:id="@+id/table3_row1">
+
+       <TextView
+           android:text="@string/vecherq"
+           android:textSize="@dimen/tdp18"
+           android:minWidth="150dp"/>
+
+        <TextView
+            android:id="@+id/eat3_t"
+            android:textSize="@dimen/tdp18" />
+			
+		</TableRow>
+			<TableRow
+			    android:id="@+id/table3_row2">
+
+			<TextView
+			    android:minWidth="150dp"
+			    android:text="@string/hrana"
+			    android:textSize="@dimen/tdp16" />
+
+			<TextView
+			    android:minWidth="50dp"
+			    android:text="@string/Tochki"
+			    android:textSize="@dimen/tdp16" />
+			
+		</TableRow>
+            
+        </TableLayout>
+         
+
+    </LinearLayout>
+</ScrollView>
+
+
+<WebView
+    android:id="@+id/webViewstats1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/scrollView1"
+    android:layout_marginTop="30dp"
+    android:layout_centerInParent="true"
+    android:visibility="gone"
+    />
+
+    <LinearLayout
+        android:id="@+id/LinLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_below="@+id/webViewstats1"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="30dp"
+        android:layout_centerHorizontal="true">
+
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+   
+    <dimen name="date_text_size_12">22dp</dimen>
+     <dimen name="tdp18">18dp</dimen>
+     <dimen name="tdp16">16dp</dimen>
+</resources>

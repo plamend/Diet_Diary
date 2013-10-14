@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Точкова диета</string>
+    <string name="menu_settings">Настройки</string>
+    <string name="title_activity_main">Точкова Диета</string>
+    <string name="multiply">*</string>
+    <string name="eq">=</string>
+    <string name="internet">internet</string>
+    <string name="add">Добави храна</string>
+    <string name="Stats">Статистика</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_stats">Статистика</string>
+    <string name="stat_button">Покажи</string>
+    <string name="hrana">Храна</string>
+    <string name="gr">гр.</string>
+    <string name="tochki">точки</string>
+    <string name="zakuska">Закуска</string>
+    <string name="Tochki">Точки</string>
+    <string name="obqd">Обяд</string>
+    <string name="pohapvane">Похапване</string>
+    <string name="hrana_name">Име на храната</string>
+    <string name="vg_100">Въглехидрати за 100 гр.</string>
+    <string name="weight_wish">Желани килограми</string>
+    <string name="weight_now">Тегло в момента</string>
+    <string name="vecherq">Вечеря</string>
+
+</resources>

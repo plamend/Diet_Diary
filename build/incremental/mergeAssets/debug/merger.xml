@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merger>
+
+    <dataSet config="main" >
+        <source path="P:\dropbox\Android_Projects\Diet_Diary\assets" />
+    </dataSet>
+    <dataSet config="debug" >
+        <source path="P:\dropbox\Android_Projects\Diet_Diary\build-types\debug\assets" />
+    </dataSet>
+
+</merger>
