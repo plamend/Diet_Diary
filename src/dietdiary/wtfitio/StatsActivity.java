@@ -2,19 +2,28 @@ package dietdiary.wtfitio;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.location.Address;
+import android.location.Criteria;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.Menu;
 import android.view.View;
+import android.view.WindowManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ArrayAdapter;
@@ -27,7 +36,8 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.inmobi.androidsdk.IMAdView;
+import com.inmobi.commons.InMobi;
+import com.inmobi.monetization.IMBanner;
 
 
 public class StatsActivity extends Activity {
@@ -42,17 +52,24 @@ public class StatsActivity extends Activity {
 	Spinner stat_spinner;
 	Button stat_but;
 	ScrollView stat_scroll;
-    IMAdView imAdView;
+
 	WebView stat_web;
 	public static Context ab ;
     DecimalFormat df = new DecimalFormat("@@@#");
     DecimalFormat df1 = new DecimalFormat("@@#");
+    IMBanner imbanner;
+    Geocoder geocoder;
+    String bestProvider;
+    String postcode = null;
+    List<Address> user = null;
+    double lat;
+    double lng;
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if(imAdView!=null)
-            imAdView.destroy();
+       // if(imAdView!=null)
+       //     imAdView.destroy();
 
 
     }
@@ -357,14 +374,49 @@ public class StatsActivity extends Activity {
 		//stat_web.loadUrl("http://adds.web44.net/");
 		//String html = "%3Chtml%3E%3Cbody%20style='margin:0;padding:0;'%3E%3Ciframe%20src='http://b.grabo.bg/?city=&affid=12590&size=300x250&output=iframe'%20width='300'%20height='250'%20style='width:300px;%20height:250px;%20border:0px%20solid;%20overflow:hidden;'%20border='0'%20frameborder='0'%20scrolling='no'%3E%3C/iframe%3E%3C/body%3E%3C/html%3E";
 		//stat_web.loadData(html, "text/html", "utf-8");
-        IMAdView imAdView = new IMAdView(this, IMAdView.INMOBI_AD_UNIT_320X50,"a8b53472ce764ecb8ed7bd28bb1b3053");
+        //IMAdView imAdView = new IMAdView(this, IMAdView.INMOBI_AD_UNIT_320X50,"a8b53472ce764ecb8ed7bd28bb1b3053");
+        LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        Location location;
+        Criteria criteria = new Criteria();
+        bestProvider = lm.getBestProvider(criteria, false);
+        if(bestProvider!=null) {
+            location = lm.getLastKnownLocation(bestProvider);
+        }
+        else{
+            location=null;
+        }
+        if (location == null){
+            Log.v("Location_traking","Location Not found");
+            //Toast.makeText(this, "Location Not found", Toast.LENGTH_LONG).show();
+        }else{
+            geocoder = new Geocoder(this);
+            try {
+
+                user = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+                postcode=user.get(0).getPostalCode();
+
+
+                System.out.println(postcode);
+
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        InMobi.setCurrentLocation(location);
+        InMobi.setLogLevel(InMobi.LOG_LEVEL.DEBUG);
+        InMobi.initialize(this, "a8b53472ce764ecb8ed7bd28bb1b3053");
+        imbanner = new IMBanner(this,"a8b53472ce764ecb8ed7bd28bb1b3053",getOptimalSlotSize(this));
+        imbanner.setRefreshInterval(30);
+        //IMAdView imAdView = new IMAdView(this, IMAdView.INMOBI_AD_UNIT_320X50,"a8b53472ce764ecb8ed7bd28bb1b3053");
         final float scale = getResources().getDisplayMetrics().density;
         int width = (int) (320 * scale + 0.5f);
         int height = (int) (50 * scale + 0.5f);
-        imAdView.setLayoutParams(new LinearLayout.LayoutParams(width, height));
+        //imAdView.setLayoutParams(new LinearLayout.LayoutParams(width, height));
         LinearLayout parent = (LinearLayout)findViewById(R.id.LinLayout1);
-        parent.addView(imAdView);
-        imAdView.loadNewAd();
+        parent.addView(imbanner);
+        //imAdView.loadNewAd();
+        //add_inmobi.addView(imbanner);
 	}
 	
 	
@@ -385,7 +437,26 @@ public class StatsActivity extends Activity {
 	    }
 	    return haveConnectedWifi || haveConnectedMobile;
 	}
-	
 
+    public static Integer getOptimalSlotSize(Activity ctxt) {
+        int toReturn = IMBanner.INMOBI_AD_UNIT_320X50;
+        Display display = ((WindowManager) ctxt
+                .getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        display.getMetrics(displayMetrics);
+        double density = displayMetrics.density;
+        double width = displayMetrics.widthPixels;
+        double height = displayMetrics.heightPixels;
+        int[][] maparray = { { IMBanner.INMOBI_AD_UNIT_728X90, 728, 90 }, {
+                IMBanner.INMOBI_AD_UNIT_468X60, 468, 60 }, {
+                IMBanner.INMOBI_AD_UNIT_320X50, 320, 50 } };
+        for (int i = 0; i < maparray.length; i++) {
+            if (maparray[i][1] * density <= width
+                    && maparray[i][2] * density <= height) {
+                toReturn = maparray[i][0];
+            }
+        }
+        return toReturn;
+    }
 
 }

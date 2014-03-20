@@ -9,7 +9,9 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import com.inmobi.androidsdk.IMAdView;
+import java.util.List;
+
+//import com.inmobi.androidsdk.IMAdView;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -18,15 +20,25 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.location.Address;
+import android.location.Criteria;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.webkit.WebView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -35,10 +47,15 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.inmobi.commons.InMobi;
+import com.inmobi.monetization.IMBanner;
 
 public class MainActivity extends Activity {
 	
@@ -53,9 +70,18 @@ public class MainActivity extends Activity {
 	Spinner eating,food_t;
 	AutoCompleteTextView food;
 	EditText qantity;
+    FrameLayout add_inmobi;
 	WebView wv;
 	Context c;
 	boolean test;
+   // IMAdView imAdView;
+    IMBanner imbanner;
+    Geocoder geocoder;
+    String bestProvider;
+    String postcode = null;
+    List<Address> user = null;
+    double lat;
+    double lng;
   // public test is;
   DecimalFormat df = new DecimalFormat("@@@#");
 	 
@@ -162,7 +188,14 @@ public class MainActivity extends Activity {
         if ((preferences11.getFloat("wish_weight", 0)==0)||preferences11.getFloat("weight",0)==0){
         	settings();
         }
-        
+
+
+
+           if (haveNetworkConnection()){
+
+               adds_load();
+           }
+
         
        }
        catch (Exception e)
@@ -230,6 +263,7 @@ public class MainActivity extends Activity {
     	eating = (Spinner)findViewById(R.id.spinner1);
     	food_t = (Spinner)findViewById(R.id.spinner2);
     	points = (TextView)findViewById(R.id.textViewtochki);
+        add_inmobi = (FrameLayout)findViewById(R.id.ad_container);
     	
     	
     	
@@ -832,5 +866,90 @@ Context mContext = getApplicationContext();
 }
 
 
+    public void adds_load(){
+
+        LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+        Location location;
+        Criteria criteria = new Criteria();
+        bestProvider = lm.getBestProvider(criteria, false);
+        if(bestProvider!=null) {
+            location = lm.getLastKnownLocation(bestProvider);
+        }
+        else{
+            location=null;
+        }
+
+        if (location == null){
+            Log.v("Location_traking","Location Not found");
+            //Toast.makeText(this, "Location Not found", Toast.LENGTH_LONG).show();
+        }else{
+            geocoder = new Geocoder(this);
+            try {
+
+                user = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+                postcode=user.get(0).getPostalCode();
+
+
+                System.out.println(postcode);
+
+            }catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        InMobi.setCurrentLocation(location);
+        InMobi.setLogLevel(InMobi.LOG_LEVEL.DEBUG);
+        InMobi.initialize(this, "a8b53472ce764ecb8ed7bd28bb1b3053");
+        imbanner = new IMBanner(this,"a8b53472ce764ecb8ed7bd28bb1b3053",getOptimalSlotSize(this));
+        imbanner.setRefreshInterval(30);
+        //IMAdView imAdView = new IMAdView(this, IMAdView.INMOBI_AD_UNIT_320X50,"a8b53472ce764ecb8ed7bd28bb1b3053");
+        /*final float scale = getResources().getDisplayMetrics().density;
+        int width = (int) (320 * scale + 0.5f);
+        int height = (int) (50 * scale + 0.5f);
+        imAdView.setLayoutParams(new LinearLayout.LayoutParams(width, height));
+        LinearLayout parent = (LinearLayout)findViewById(R.id.LinLayout1);
+        parent.addView(imAdView);
+        imAdView.loadNewAd();*/
+        add_inmobi.addView(imbanner);
+    }
+
+
+    private boolean haveNetworkConnection() {
+        boolean haveConnectedWifi = false;
+        boolean haveConnectedMobile = false;
+
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo[] netInfo = cm.getAllNetworkInfo();
+        assert netInfo != null;
+        for (NetworkInfo ni : netInfo) {
+            if (ni.getTypeName().equalsIgnoreCase("WIFI"))
+                if (ni.isConnected())
+                    haveConnectedWifi = true;
+            if (ni.getTypeName().equalsIgnoreCase("MOBILE"))
+                if (ni.isConnected())
+                    haveConnectedMobile = true;
+        }
+        return haveConnectedWifi || haveConnectedMobile;
+    }
+    public static Integer getOptimalSlotSize(Activity ctxt) {
+        int toReturn = IMBanner.INMOBI_AD_UNIT_320X50;
+        Display display = ((WindowManager) ctxt
+                .getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        display.getMetrics(displayMetrics);
+        double density = displayMetrics.density;
+        double width = displayMetrics.widthPixels;
+        double height = displayMetrics.heightPixels;
+        int[][] maparray = { { IMBanner.INMOBI_AD_UNIT_728X90, 728, 90 }, {
+                IMBanner.INMOBI_AD_UNIT_468X60, 468, 60 }, {
+                IMBanner.INMOBI_AD_UNIT_320X50, 320, 50 } };
+        for (int i = 0; i < maparray.length; i++) {
+            if (maparray[i][1] * density <= width
+                    && maparray[i][2] * density <= height) {
+                toReturn = maparray[i][0];
+            }
+        }
+        return toReturn;
+    }
 
 }
