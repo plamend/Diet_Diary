@@ -7,11 +7,18 @@
     tools:context=".MainActivity"
     android:foregroundGravity="center_horizontal">
 
+
     <RelativeLayout
         android:id="@id/relativeView1"
         android:layout_width="wrap_content"
         android:layout_height="380.0dip"
          >
+        <FrameLayout
+            android:id="@+id/ad_container"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:layout_centerHorizontal="true"
+            />
 
         <TextView
             android:id="@id/textView1"
@@ -20,7 +27,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:textAppearance="?android:textAppearanceLarge" />
+            android:textAppearance="?android:textAppearanceLarge"
+            android:layout_marginTop="50dp"/>
 
         <Spinner
             android:id="@id/spinner2"
@@ -128,13 +136,7 @@
             />
 
             </LinearLayout>
-        <FrameLayout
-            android:id="@+id/ad_container"
-            android:layout_width="320dp"
-            android:layout_height="50dp"
-            android:layout_below="@id/LinLayoutButtons"
-            android:layout_marginTop="50dp"
-            android:layout_centerHorizontal="true"/>
+
 
     </RelativeLayout>
 

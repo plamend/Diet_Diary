@@ -5,7 +5,16 @@
     android:layout_height="match_parent"
     android:background="#99CCFF" >
 
+    <LinearLayout
+        android:id="@+id/LinLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        >
 
+    </LinearLayout>
 
     <Spinner
     android:id="@+id/spinnerdate1"
@@ -15,6 +24,8 @@
     android:layout_alignParentLeft="true"
     android:layout_alignParentTop="true"
     android:layout_toLeftOf="@+id/statbutton1"
+        android:layout_marginTop="70dp"
+
      />
 
 <Button
@@ -23,6 +34,7 @@
     android:layout_height="wrap_content"
     android:layout_alignParentRight="true"
     android:layout_alignParentTop="true"
+    android:layout_marginTop="70dp"
     android:background="@drawable/button_list"/>
 
 <ScrollView
@@ -207,17 +219,7 @@
     android:visibility="gone"
     />
 
-    <LinearLayout
-        android:id="@+id/LinLayout1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_below="@+id/webViewstats1"
-        android:layout_gravity="center_horizontal"
-        android:paddingTop="30dp"
-        android:layout_centerHorizontal="true">
 
-    </LinearLayout>
 
 
 </RelativeLayout>

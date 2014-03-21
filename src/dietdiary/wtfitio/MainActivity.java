@@ -54,6 +54,9 @@ import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
 import com.inmobi.commons.InMobi;
 import com.inmobi.monetization.IMBanner;
 
@@ -61,7 +64,7 @@ public class MainActivity extends Activity {
 	
 	
 	public static final String SECURE_SETTINGS = "DietDiary_sett";
-	
+    private static String AD_UNIT_ID_ADMOB = "ca-app-pub-7046352820490447/5936744513";
 	
 	AABDatabaseManager1 db;
 	Button aplay,cancel;
@@ -82,13 +85,36 @@ public class MainActivity extends Activity {
     List<Address> user = null;
     double lat;
     double lng;
+    private AdView adView_Admob;
   // public test is;
   DecimalFormat df = new DecimalFormat("@@@#");
-	 
-	
-	
-	
-	 private RefreshHandler mRedrawHandler = new RefreshHandler();
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (adView_Admob != null) {
+            adView_Admob.resume();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        if (adView_Admob != null) {
+            adView_Admob.pause();
+        }
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (adView_Admob != null) {
+            adView_Admob.destroy();
+        }
+        super.onDestroy();
+    }
+
+    private RefreshHandler mRedrawHandler = new RefreshHandler();
 	//private dbdownload dw= new dbdownload();
 
 	 
@@ -897,11 +923,15 @@ Context mContext = getApplicationContext();
             }
         }
 
-        InMobi.setCurrentLocation(location);
-        InMobi.setLogLevel(InMobi.LOG_LEVEL.DEBUG);
-        InMobi.initialize(this, "a8b53472ce764ecb8ed7bd28bb1b3053");
-        imbanner = new IMBanner(this,"a8b53472ce764ecb8ed7bd28bb1b3053",getOptimalSlotSize(this));
-        imbanner.setRefreshInterval(30);
+       // InMobi.setCurrentLocation(location);
+        //InMobi.setLogLevel(InMobi.LOG_LEVEL.DEBUG);
+       // InMobi.initialize(this, "a8b53472ce764ecb8ed7bd28bb1b3053");
+        //imbanner = new IMBanner(this,"a8b53472ce764ecb8ed7bd28bb1b3053",getOptimalSlotSize(this));
+       // imbanner.setRefreshInterval(30);
+        adView_Admob = new AdView(this);
+        adView_Admob.setAdSize(AdSize.BANNER);
+        adView_Admob.setAdUnitId(AD_UNIT_ID_ADMOB);
+        AdRequest adRequest1 = new AdRequest.Builder().setLocation(location).build();
         //IMAdView imAdView = new IMAdView(this, IMAdView.INMOBI_AD_UNIT_320X50,"a8b53472ce764ecb8ed7bd28bb1b3053");
         /*final float scale = getResources().getDisplayMetrics().density;
         int width = (int) (320 * scale + 0.5f);
@@ -910,7 +940,8 @@ Context mContext = getApplicationContext();
         LinearLayout parent = (LinearLayout)findViewById(R.id.LinLayout1);
         parent.addView(imAdView);
         imAdView.loadNewAd();*/
-        add_inmobi.addView(imbanner);
+        add_inmobi.addView(adView_Admob);
+        adView_Admob.loadAd(adRequest1);
     }
 
 
