@@ -408,7 +408,7 @@ public class StatsActivity extends Activity {
             Log.v("Location_traking","Location Not found");
             //Toast.makeText(this, "Location Not found", Toast.LENGTH_LONG).show();
         }else{
-            geocoder = new Geocoder(this);
+            /*geocoder = new Geocoder(this);
             try {
 
                 user = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
@@ -419,7 +419,7 @@ public class StatsActivity extends Activity {
 
             }catch (Exception e) {
                 e.printStackTrace();
-            }
+            }*/
         }
 
         //InMobi.setCurrentLocation(location);

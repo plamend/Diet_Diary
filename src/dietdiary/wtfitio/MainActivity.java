@@ -15,6 +15,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -27,6 +28,7 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -78,6 +80,7 @@ public class MainActivity extends Activity {
 	Context c;
 	boolean test;
    // IMAdView imAdView;
+    Location locationMain;
     IMBanner imbanner;
     Geocoder geocoder;
     String bestProvider;
@@ -893,35 +896,11 @@ Context mContext = getApplicationContext();
 
 
     public void adds_load(){
-
         LocationManager lm = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        Location location;
-        Criteria criteria = new Criteria();
-        bestProvider = lm.getBestProvider(criteria, false);
-        if(bestProvider!=null) {
-            location = lm.getLastKnownLocation(bestProvider);
-        }
-        else{
-            location=null;
-        }
 
-        if (location == null){
-            Log.v("Location_traking","Location Not found");
-            //Toast.makeText(this, "Location Not found", Toast.LENGTH_LONG).show();
-        }else{
-            geocoder = new Geocoder(this);
-            try {
-
-                user = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-                postcode=user.get(0).getPostalCode();
+        new findLocation().execute(lm);
 
 
-                System.out.println(postcode);
-
-            }catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
 
        // InMobi.setCurrentLocation(location);
         //InMobi.setLogLevel(InMobi.LOG_LEVEL.DEBUG);
@@ -931,7 +910,7 @@ Context mContext = getApplicationContext();
         adView_Admob = new AdView(this);
         adView_Admob.setAdSize(AdSize.BANNER);
         adView_Admob.setAdUnitId(AD_UNIT_ID_ADMOB);
-        AdRequest adRequest1 = new AdRequest.Builder().setLocation(location).build();
+        AdRequest adRequest1 = new AdRequest.Builder().setLocation(locationMain).build();
         //IMAdView imAdView = new IMAdView(this, IMAdView.INMOBI_AD_UNIT_320X50,"a8b53472ce764ecb8ed7bd28bb1b3053");
         /*final float scale = getResources().getDisplayMetrics().density;
         int width = (int) (320 * scale + 0.5f);
@@ -941,7 +920,11 @@ Context mContext = getApplicationContext();
         parent.addView(imAdView);
         imAdView.loadNewAd();*/
         add_inmobi.addView(adView_Admob);
-        adView_Admob.loadAd(adRequest1);
+        //new loadAd().execute(adView_Admob);
+       adView_Admob.loadAd(adRequest1);
+        if(locationMain!=null){
+           adView_Admob.loadAd(adRequest1);
+        }
     }
 
 
@@ -983,4 +966,55 @@ Context mContext = getApplicationContext();
         return toReturn;
     }
 
+private  class findLocation extends AsyncTask<LocationManager,Integer,Location>{
+    @Override
+    protected Location doInBackground(LocationManager... locationManagers) {
+        LocationManager lm = locationManagers[0];
+        Location location;
+        Criteria criteria = new Criteria();
+        bestProvider = lm.getBestProvider(criteria, false);
+        if(bestProvider!=null) {
+            location = lm.getLastKnownLocation(bestProvider);
+        }
+        else{
+            location=null;
+        }
+        return location;
+    }
+
+    @Override
+    protected void onPostExecute(Location location) {
+        if (location == null){
+            Log.v("Location_traking","Location Not found");
+            //Toast.makeText(this, "Location Not found", Toast.LENGTH_LONG).show();
+
+        }else{
+         /*   geocoder = new Geocoder(MainActivity.this);
+            try {
+
+                user = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+                postcode=user.get(0).getPostalCode();
+
+
+                System.out.println(postcode);
+
+            }catch (Exception e) {
+                e.printStackTrace();
+            }*/
+
+        }
+
+        locationMain = location;
+    }
+}
+    private class  loadAd extends AsyncTask<AdView,String,String>{
+
+
+        @Override
+        protected String doInBackground(AdView... adViews) {
+            AdRequest adRequest1 = new AdRequest.Builder().setLocation(locationMain).build();
+            adView_Admob.loadAd(adRequest1);
+            return "done";
+        }
+    }
 }
